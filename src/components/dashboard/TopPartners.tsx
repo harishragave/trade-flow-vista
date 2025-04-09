@@ -60,11 +60,9 @@ const TopPartners = ({ title, partners, type }: TopPartnersProps) => {
                 value={partner.percentage} 
                 className={cn(
                   type === "import" ? "bg-blue-100" : "bg-green-100",
-                  "h-2"
+                  "h-2",
+                  type === "import" ? "[--progress-fill:theme(colors.blue.500)]" : "[--progress-fill:theme(colors.green.500)]"
                 )}
-                indicatorClassName={
-                  type === "import" ? "bg-trade-import" : "bg-trade-export"
-                }
               />
             </div>
           ))}
