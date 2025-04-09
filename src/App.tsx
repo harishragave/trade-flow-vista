@@ -8,6 +8,10 @@ import Layout from "./pages/Layout";
 import Dashboard from "./pages/Dashboard";
 import Imports from "./pages/Imports";
 import Exports from "./pages/Exports";
+import Analytics from "./pages/Analytics";
+import Reports from "./pages/Reports";
+import Partners from "./pages/Partners";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,10 +27,10 @@ const App = () => (
             <Route index element={<Dashboard />} />
             <Route path="imports" element={<Imports />} />
             <Route path="exports" element={<Exports />} />
-            <Route path="analytics" element={<Dashboard />} />
-            <Route path="reports" element={<Dashboard />} />
-            <Route path="partners" element={<Dashboard />} />
-            <Route path="settings" element={<Dashboard />} />
+            <Route path="analytics" element={<Analytics />} />
+            <Route path="reports" element={<Reports />} />
+            <Route path="partners" element={<Partners />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
