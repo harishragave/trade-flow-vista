@@ -1,6 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from "recharts";
+import { cn } from "@/lib/utils";
 
 interface TradeChartProps {
   title: string;
@@ -9,11 +10,12 @@ interface TradeChartProps {
     imports: number;
     exports: number;
   }>;
+  className?: string;
 }
 
-const TradeChart = ({ title, data }: TradeChartProps) => {
+const TradeChart = ({ title, data, className }: TradeChartProps) => {
   return (
-    <Card className="col-span-3">
+    <Card className={className}>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
       </CardHeader>

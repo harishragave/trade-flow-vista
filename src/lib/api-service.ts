@@ -1,4 +1,3 @@
-
 // This is a simulated API service to mock backend calls
 // In a real application, this would connect to your backend API
 
@@ -202,7 +201,11 @@ const exportData: ExportTransaction[] = [
   },
 ];
 
-const partnersData = {
+const partnersData: {
+  suppliers: Partner[];
+  customers: Partner[];
+  logistics: Partner[];
+} = {
   suppliers: [
     { 
       id: "SUP001", 
@@ -210,7 +213,7 @@ const partnersData = {
       country: "Japan", 
       category: "Electronics", 
       rating: 4.8,
-      status: "active",
+      status: "active" as const,
       since: "2018",
       contact: {
         email: "contact@globalelec.com",
@@ -224,7 +227,7 @@ const partnersData = {
       country: "India", 
       category: "Textiles", 
       rating: 4.5,
-      status: "active",
+      status: "active" as const,
       since: "2020",
       contact: {
         email: "info@textileworld.com",
@@ -238,7 +241,7 @@ const partnersData = {
       country: "Germany", 
       category: "Automotive", 
       rating: 4.7,
-      status: "active",
+      status: "active" as const,
       since: "2019",
       contact: {
         email: "sales@autoparts.com",
@@ -252,7 +255,7 @@ const partnersData = {
       country: "Mexico", 
       category: "Food", 
       rating: 4.2,
-      status: "pending",
+      status: "pending" as const,
       since: "2022",
       contact: {
         email: "info@freshproduce.com",
@@ -266,7 +269,7 @@ const partnersData = {
       country: "USA", 
       category: "Chemicals", 
       rating: 4.6,
-      status: "active",
+      status: "active" as const,
       since: "2017",
       contact: {
         email: "support@chemsolutions.com",
@@ -282,7 +285,7 @@ const partnersData = {
       country: "Canada", 
       category: "Electronics", 
       rating: 4.9,
-      status: "active",
+      status: "active" as const,
       since: "2019",
       contact: {
         email: "orders@techretail.com",
@@ -296,7 +299,7 @@ const partnersData = {
       country: "France", 
       category: "Machinery", 
       rating: 4.7,
-      status: "active",
+      status: "active" as const,
       since: "2020",
       contact: {
         email: "sales@euromachine.com",
@@ -310,7 +313,7 @@ const partnersData = {
       country: "UK", 
       category: "Pharmaceuticals", 
       rating: 4.8,
-      status: "active",
+      status: "active" as const,
       since: "2018",
       contact: {
         email: "orders@healthplus.com",
@@ -324,7 +327,7 @@ const partnersData = {
       country: "Brazil", 
       category: "Agriculture", 
       rating: 4.5,
-      status: "inactive",
+      status: "inactive" as const,
       since: "2021",
       contact: {
         email: "info@agrotech.com",
@@ -338,7 +341,7 @@ const partnersData = {
       country: "Australia", 
       category: "Raw Materials", 
       rating: 4.6,
-      status: "active",
+      status: "active" as const,
       since: "2017",
       contact: {
         email: "orders@rawmaterials.com",
@@ -354,7 +357,7 @@ const partnersData = {
       country: "Singapore", 
       category: "Shipping", 
       rating: 4.7,
-      status: "active",
+      status: "active" as const,
       since: "2018",
       contact: {
         email: "info@fastship.com",
@@ -368,7 +371,7 @@ const partnersData = {
       country: "UAE", 
       category: "Air Freight", 
       rating: 4.6,
-      status: "active",
+      status: "active" as const,
       since: "2019",
       contact: {
         email: "booking@aerofreight.com",
@@ -382,7 +385,7 @@ const partnersData = {
       country: "Netherlands", 
       category: "Customs", 
       rating: 4.8,
-      status: "active",
+      status: "active" as const,
       since: "2020",
       contact: {
         email: "support@globalcustoms.com",
@@ -509,7 +512,7 @@ const apiService = {
     
     if (!query) return partners;
     
-    return partners.filter((partner: Partner) => 
+    return partners.filter((partner) => 
       partner.name.toLowerCase().includes(query.toLowerCase()) ||
       partner.category.toLowerCase().includes(query.toLowerCase()) ||
       partner.country.toLowerCase().includes(query.toLowerCase())

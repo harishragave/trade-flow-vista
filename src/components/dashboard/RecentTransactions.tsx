@@ -23,6 +23,7 @@ interface Transaction {
 
 interface RecentTransactionsProps {
   transactions: Transaction[];
+  className?: string;
 }
 
 const formatCurrency = (value: number) => {
@@ -32,9 +33,9 @@ const formatCurrency = (value: number) => {
   }).format(value);
 };
 
-const RecentTransactions = ({ transactions }: RecentTransactionsProps) => {
+const RecentTransactions = ({ transactions, className }: RecentTransactionsProps) => {
   return (
-    <Card className="col-span-3">
+    <Card className={className}>
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>Recent Transactions</CardTitle>
         <DropdownMenu>

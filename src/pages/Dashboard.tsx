@@ -5,6 +5,8 @@ import StatCard from "@/components/dashboard/StatCard";
 import TradeChart from "@/components/dashboard/TradeChart";
 import RecentTransactions from "@/components/dashboard/RecentTransactions";
 import TopPartners from "@/components/dashboard/TopPartners";
+import DatabaseInfo from "@/components/dashboard/DatabaseInfo";
+import ConnectionStatus from "@/components/database/ConnectionStatus";
 import { useTrade } from "@/contexts/TradeContext";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -35,9 +37,12 @@ const Dashboard = () => {
   return (
     <div className="space-y-6 p-6 pb-16">
       <div className="flex flex-col space-y-2">
-        <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+        <div className="flex items-center justify-between">
+          <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+          <ConnectionStatus />
+        </div>
         <p className="text-muted-foreground">
-          Overview of your import and export activities
+          Overview of your import and export activities with dynamic data
         </p>
       </div>
 
@@ -82,38 +87,52 @@ const Dashboard = () => {
         )}
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
         {loading ? (
           <>
-            <Skeleton className="h-[300px] col-span-2" />
-            <Skeleton className="h-[300px] col-span-2" />
-            <Skeleton className="h-[300px] col-span-2" />
+            <Skeleton className="h-[300px] lg:col-span-3" />
+            <Skeleton className="h-[300px] lg:col-span-2" />
+            <Skeleton className="h-[300px] lg:col-span-2" />
           </>
         ) : (
           <>
             <TradeChart
               title="Monthly Trade Volume"
               data={monthlyTradeData}
+              className="lg:col-span-3"
             />
             <TopPartners
               title="Top Import Partners"
               partners={topImportPartners}
               type="import"
+              className="lg:col-span-2"
             />
             <TopPartners
               title="Top Export Partners"
               partners={topExportPartners}
               type="export"
+              className="lg:col-span-2"
             />
           </>
         )}
       </div>
 
-      {loading ? (
-        <Skeleton className="h-[400px] w-full" />
-      ) : (
-        <RecentTransactions transactions={recentTransactions} />
-      )}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+        {loading ? (
+          <>
+            <Skeleton className="h-[400px] lg:col-span-5" />
+            <Skeleton className="h-[400px] lg:col-span-2" />
+          </>
+        ) : (
+          <>
+            <RecentTransactions 
+              transactions={recentTransactions} 
+              className="lg:col-span-5"
+            />
+            <DatabaseInfo />
+          </>
+        )}
+      </div>
     </div>
   );
 };

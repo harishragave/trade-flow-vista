@@ -14,6 +14,7 @@ interface TopPartnersProps {
   title: string;
   partners: Partner[];
   type: "import" | "export";
+  className?: string;
 }
 
 const formatCurrency = (value: number) => {
@@ -25,9 +26,9 @@ const formatCurrency = (value: number) => {
   }).format(value);
 };
 
-const TopPartners = ({ title, partners, type }: TopPartnersProps) => {
+const TopPartners = ({ title, partners, type, className }: TopPartnersProps) => {
   return (
-    <Card>
+    <Card className={className}>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
       </CardHeader>
