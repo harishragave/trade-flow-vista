@@ -24,7 +24,7 @@ const ConnectionStatus = () => {
           <TooltipTrigger asChild>
             <div className="flex items-center gap-1.5">
               <Database className="h-4 w-4 text-muted-foreground" />
-              <Badge variant={isConnected ? "success" : "outline"} className="h-5 px-1.5">
+              <Badge variant={isConnected ? "secondary" : "outline"} className="h-5 px-1.5">
                 {isConnected ? (
                   <>
                     <span className="mr-1 h-1.5 w-1.5 rounded-full bg-green-500"></span>
